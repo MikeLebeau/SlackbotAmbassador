@@ -1,0 +1,26 @@
+module.exports = {
+    ITC: [
+        'atemple',
+        'mginguenaud',
+        'mlebeau',
+        'tfleurant',
+        'ajanin',
+        'psentenac',
+        'slemerdy'
+    ],
+    BDL: [
+        'fwlodarezack',
+        'aschiochet',
+        'sbernaud',
+        'acohen',
+        'ylagache'
+    ],
+    ACDC: [
+        'iparra',
+        'cmichel',
+        'cbigot',
+        'tdesvenain',
+        'swillmann',
+        'nboisnic'
+    ]
+}

@@ -1,3 +1,9 @@
+resources/env.js
+resources/state.js
+resources/teams.js
+.idea/
+
+
 # Logs
 logs
 *.log

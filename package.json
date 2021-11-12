@@ -1,0 +1,15 @@
+{
+  "name": "slackbotambassadorspickup",
+  "version": "1.0.0",
+  "description": "A slack bot who pickup some dudes to be ambassadors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Mike Lebeau",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^3.7.0"
+  }
+}
