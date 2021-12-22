@@ -10,6 +10,8 @@
   "author": "Mike Lebeau",
   "license": "ISC",
   "dependencies": {
-    "@slack/bolt": "^3.7.0"
+    "@slack/bolt": "^3.7.0",
+    "axios": "^0.24.0",
+    "googleapis": "^92.0.0"
   }
 }

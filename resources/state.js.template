@@ -1,0 +1,54 @@
+/**
+* Le support représente l'équipe qui est de support dev
+* - actual -> L'équipe de cette semaine
+* - last -> L'équipe de la semaine précédente
+*
+* Qui -dans-> Equipe
+*
+* Chaque team est un objet avec:
+*  - ambassador -> qui est l'ambassadeur de cette équipe
+*  - actual -> qui est l'ambassadeur qui vient assister au dm de cette equipe
+*  - previous -> qui est l'ambassadeur de la semaine dernière qui est venu
+*
+*  Pour `actual` et `previous` on a aussi le nom de l'équipe pour savoir
+*  quand est-ce qu'il faut switch d'équipe
+*/
+module.exports = {
+ support: {
+   actual: 'BDL',
+   last: 'ACDC'
+ },
+ ITC: {
+   ambassador: 'mlebeau',
+   actual: {
+     name: 'nboisnic',
+     team: 'ACDC'
+   },
+   last: {
+     name: 'swillmann',
+     team: 'ACDC'
+   }
+ },
+ BDL: {
+   ambassador: 'ylagache',
+   actual: {
+     name: 'mlebeau',
+     team: 'ITC'
+   },
+   last: {
+     name: 'slemerdy',
+     team: 'ITC'
+   }
+ },
+ ACDC: {
+   ambassador: 'nboisnic',
+   actual: {
+     name: 'ylagache',
+     team: 'BDL'
+   },
+   last: {
+     name: 'acohen',
+     team: 'BDL'
+   }
+ }
+}
