@@ -169,7 +169,7 @@ function initState(isOnline) {
   if (isOnline) {
     const mySpreadsheet = google.sheets({
       version: 'v4',
-      auth: 'AIzaSyAl2Ewy-Npt9u27stiCgoBImkvrJsHg3Zc'
+      auth: ENV.GOOGLE_API_KEY,
     });
 
     mySpreadsheet.spreadsheets.values.get({
