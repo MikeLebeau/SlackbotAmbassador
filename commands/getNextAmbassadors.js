@@ -42,6 +42,11 @@ module.exports = {
 
     myState.supportDev.last = tempTeam;
 
+    var tempDate = addDays(Date.parse(myState.from), 7)
+    myState.from = `${tempDate.getFullYear()}-${tempDate.getMonth()+1}-${tempDate.getDate()}`;
+    tempDate = addDays(Date.parse(myState.to), 7);
+    myState.to = `${tempDate.getFullYear()}-${tempDate.getMonth()+1}-${tempDate.getDate()}`;
+
     let response = `Semaine: du ${myState.from} au ${myState.to}\n`
         + 'Les nouveaux ambassadeurs sont:\n';
 
@@ -56,4 +61,11 @@ module.exports = {
     saveState(myState, true);
     return response;
   }
+}
+
+// Find here => https://stackoverflow.com/questions/563406/add-days-to-javascript-date
+function addDays(theDate, dayCount) {
+  var date = new Date(theDate);
+  date.setDate(date.getDate() + dayCount);
+  return date;
 }
