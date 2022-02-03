@@ -57,7 +57,7 @@ etc.
 > /ambassadeur next  
 > Désigne les heureux élus pour la semaine prochaine
 
-> /ambassadeur next <teamName>  
+> /ambassadeur next [teamName]  
 > Désigne un nouvel ambassadeur pour allez dans cette équipe
 
 ## Reste à faire
