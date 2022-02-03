@@ -33,70 +33,64 @@ module.exports = {
       spreadShit.spreadsheets.values.get({
             spreadsheetId: ENV.SPREADSHEET_ID,
             range: 'Feuille 1!A2:F3',
-          },
-          (err, res) => {
-            if (err) {
-              console.error();
-              throw ('The API returned an error. =>' + err);
-            }
+          })
+      .then(res => {
+        let sheetValue = res.data.values;
 
-            let sheetValue = res.data.values;
+        if (sheetValue.length === 0) {
+          throw 'No data found.';
+        }
 
-            if (sheetValue.length === 0) {
-              throw 'No data found.';
-            }
+        state['from'] = `${sheetValue[0][0]}`;
+        state['to'] = `${sheetValue[0][1]}`;
 
-            state['from'] = `${sheetValue[0][0]}`;
-            state['to'] = `${sheetValue[0][1]}`;
+        state.supportDev.actual = sheetValue[0][5];
+        state.supportDev.last = sheetValue[1][5];
 
-            state.supportDev.actual = sheetValue[0][5];
-            state.supportDev.last = sheetValue[1][5];
+        // First row is for the actual ambassadors
+        state['ACDC'].actual = {
+          name: `${sheetValue[0][2]}`,
+          team: whereComeFromThisDude(`${sheetValue[0][2]}`, TEAMS),
+        }
 
-            // First row is for the actual ambassadors
-            state['ACDC'].actual = {
-              name: `${sheetValue[0][2]}`,
-              team: whereComeFromThisDude(`${sheetValue[0][2]}`, TEAMS),
-            }
+        state['BDL'].actual = {
+          name: `${sheetValue[0][3]}`,
+          team: whereComeFromThisDude(`${sheetValue[0][3]}`, TEAMS)
+        }
 
-            state['BDL'].actual = {
-              name: `${sheetValue[0][3]}`,
-              team: whereComeFromThisDude(`${sheetValue[0][3]}`, TEAMS)
-            }
+        state['ITC'].actual = {
+          name: `${sheetValue[0][4]}`,
+          team: whereComeFromThisDude(`${sheetValue[0][4]}`, TEAMS)
+        }
 
-            state['ITC'].actual = {
-              name: `${sheetValue[0][4]}`,
-              team: whereComeFromThisDude(`${sheetValue[0][4]}`, TEAMS)
-            }
+        state[whereComeFromThisDude(
+            `${sheetValue[0][2]}`,
+            TEAMS)].ambassador = `${sheetValue[0][2]}`;
 
+        state[whereComeFromThisDude(
+            `${sheetValue[0][3]}`,
+            TEAMS)].ambassador = `${sheetValue[0][3]}`;
 
-            state[whereComeFromThisDude(
-                `${sheetValue[0][2]}`,
-                TEAMS)].ambassador = `${sheetValue[0][2]}`;
+        state[whereComeFromThisDude(
+            `${sheetValue[0][4]}`,
+            TEAMS)].ambassador = `${sheetValue[0][4]}`;
 
-            state[whereComeFromThisDude(
-                `${sheetValue[0][3]}`,
-                TEAMS)].ambassador = `${sheetValue[0][3]}`;
+        state['ACDC'].last = {
+          name: `${sheetValue[1][2]}`,
+          team: whereComeFromThisDude(`${sheetValue[1][2]}`, TEAMS)
+        }
 
-            state[whereComeFromThisDude(
-                `${sheetValue[0][4]}`,
-                TEAMS)].ambassador = `${sheetValue[0][4]}`;
+        state['BDL'].last = {
+          name: `${sheetValue[1][3]}`,
+          team: whereComeFromThisDude(`${sheetValue[1][3]}`, TEAMS)
+        }
 
-
-            state['ACDC'].last = {
-              name: `${sheetValue[1][2]}`,
-              team: whereComeFromThisDude(`${sheetValue[1][2]}`, TEAMS)
-            }
-
-            state['BDL'].last = {
-              name: `${sheetValue[1][3]}`,
-              team: whereComeFromThisDude(`${sheetValue[1][3]}`, TEAMS)
-            }
-
-            state['ITC'].last = {
-              name: `${sheetValue[1][4]}`,
-              team: whereComeFromThisDude(`${sheetValue[1][4]}`, TEAMS)
-            }
-          });
+        state['ITC'].last = {
+          name: `${sheetValue[1][4]}`,
+          team: whereComeFromThisDude(`${sheetValue[1][4]}`, TEAMS)
+        }
+      })
+      .catch(error => console.error(error));
     } else {
       state = STATE;
     }

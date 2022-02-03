@@ -1,10 +1,13 @@
 const {transformTeamNameIntoCode} = require(
     "../utils/transformTeamNameIntoSHIIIT");
+const {initState} = require("../utils/googleSheet");
 
 module.exports = {
   name: '',
   description: 'Ca c\'est pour avoir les ambassadeurs actuels',
   method: (state, allTeams) => {
+    state = initState(true, state);
+
     let response = `Semaine: du ${state.from} au ${state.to}\n`
         + 'Les ambassadeurs actuels sont:\n';
 
